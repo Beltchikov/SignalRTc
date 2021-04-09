@@ -48,7 +48,7 @@ namespace SignalRTc
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
-                endpoints.MapHub<ChatHub>("/chathaub");
+                endpoints.MapHub<ChatHub>("/chatHub");
             });
         }
     }
