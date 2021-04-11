@@ -9,3 +9,17 @@ connection.on("RecieveMessage", (user, message) => {
     li.textContent = encodedMsg;
     document.getElementById("messageList").appendChild(li);
 });
+
+connection.start().then(() => {
+    document.getElementById("sendButton").disabled = false;
+}).catch((err) => {
+    return console.error(err.toString());
+});
+
+document.getElementById("sendButton").addEventListener("click", (event) => {
+    var user = document.getElementById("userInput").value;
+    var message = document.getElementById("messageInput").value;
+    connection.invoke("SendMessage", user, message).catch((err) => {
+        return console.error(err.toString());
+    });
+});
